@@ -1,7 +1,7 @@
 package com.listapp.android.model.openweathermap;
 
 /**
- * Created by ivan on 4/10/2017.
+ * Created on 4/10/2017.
  */
 
 public class WeatherData {
@@ -55,8 +55,12 @@ public class WeatherData {
     }
 
     @Override
-    public String toString()
-    {
-        return "ClassPojo [id = "+id+", icon = "+icon+", description = "+description+", main = "+main+"]";
+    public String toString() {
+        return "WeatherData{" +
+                "id='" + id + '\'' +
+                ", icon='" + icon + '\'' +
+                ", description='" + description + '\'' +
+                ", main='" + main + '\'' +
+                '}';
     }
 }

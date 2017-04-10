@@ -2,12 +2,17 @@ package com.listapp.android.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.listapp.android.R;
+import com.listapp.android.activity.adapter.ItemAdapter;
 import com.listapp.android.global.ApiServer;
 import com.listapp.android.model.openweathermap.WeatherGlobalData;
+import com.listapp.android.model.openweathermap.WeatherList;
 import com.listapp.android.network.MeteoApiEndpointInterface;
+
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -18,6 +23,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends BasicActivity {
+
+    private ArrayList<WeatherList> weatherLists;
+    private ItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +63,14 @@ public class MainActivity extends BasicActivity {
                     WeatherGlobalData weatherGlobalData = response.body();
                     Log.d(TAG, weatherGlobalData.toString());
 
+                    adapter.clear();
+                    for(WeatherList weatherList: weatherGlobalData.getList()){
+                        adapter.add(weatherList);
+                    }
+//                    weatherLists = weatherGlobalData.getList();
+//                    adapter.notifyDataSetChanged();
+
+
                 } else {
                     // TODO show error
                     showServerProblem();
@@ -67,6 +83,14 @@ public class MainActivity extends BasicActivity {
             }
 
         });
+
+        // Construct the data source
+        weatherLists = new ArrayList<WeatherList>();
+// Create the adapter to convert the array to views
+        adapter = new ItemAdapter(this, weatherLists);
+// Attach the adapter to a ListView
+        ListView listView = (ListView) findViewById(R.id.lt_main_activity);
+        listView.setAdapter(adapter);
 
     }
 

@@ -1,7 +1,7 @@
 package com.listapp.android.global;
 
 /**
- * Created by ivan.pico.martin
+ * Created.pico.martin
  */
 public class ApiServer {
 

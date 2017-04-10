@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.listapp.android.global.Constant;
 
 /**
- * Created by ivan on 4/10/2017.
+ * Created on 4/10/2017.
  */
 
 public class BasicActivity extends AppCompatActivity{

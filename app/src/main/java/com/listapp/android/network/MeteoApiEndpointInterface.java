@@ -8,9 +8,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
-/**
- * Created by ivan on 4/10/2017.
- */
 
 public interface MeteoApiEndpointInterface {
 

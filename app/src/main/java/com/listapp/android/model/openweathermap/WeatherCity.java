@@ -1,7 +1,7 @@
 package com.listapp.android.model.openweathermap;
 
 /**
- * Created by ivan on 4/10/2017.
+ * Created on 4/10/2017.
  */
 
 public class WeatherCity
