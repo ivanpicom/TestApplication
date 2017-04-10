@@ -1,5 +1,6 @@
 package com.listapp.android.data;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.listapp.android.BuildConfig;
@@ -7,6 +8,7 @@ import com.listapp.android.global.ApiServer;
 import com.listapp.android.model.openweathermap.WeatherGlobalDataVO;
 import com.listapp.android.network.MeteoApiEndpointInterface;
 
+import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -25,6 +27,8 @@ public class GeneralDAO {
 
 
     private static GeneralDAO generalDAO;
+    private MeteoApiEndpointInterface apiService;
+
 
     public static GeneralDAO getInstance() {
         if (generalDAO == null)
@@ -56,12 +60,11 @@ public class GeneralDAO {
                     .build();
 
 
-        MeteoApiEndpointInterface apiService = retrofit.create(MeteoApiEndpointInterface.class);
+        apiService = retrofit.create(MeteoApiEndpointInterface.class);
 
         Call<WeatherGlobalDataVO> callCityWeatcher;
 
         callCityWeatcher = apiService.getWeather(cityId, ApiServer.API_KEY);
-//        callCityWeatcher = apiService.getWeather("3128759", ApiServer.API_KEY);
 
         callCityWeatcher.enqueue(new Callback<WeatherGlobalDataVO>() {
             @Override
@@ -87,4 +90,25 @@ public class GeneralDAO {
         });
 
     }
+
+
+    public Observable<WeatherGlobalDataVO> getCityWeatherObs(@NonNull String cityId) {
+
+        Retrofit retrofit;
+
+
+            retrofit = new Retrofit.Builder()
+//                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .baseUrl(ApiServer.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+        apiService = retrofit.create(MeteoApiEndpointInterface.class);
+
+
+
+
+        return apiService.getWeatherObs(cityId, ApiServer.API_KEY);
+    }
+
 }
