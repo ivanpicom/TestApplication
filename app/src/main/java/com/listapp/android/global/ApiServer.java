@@ -1,8 +1,5 @@
 package com.listapp.android.global;
 
-/**
- * Created.pico.martin
- */
 public class ApiServer {
 
     // base Url (data source)

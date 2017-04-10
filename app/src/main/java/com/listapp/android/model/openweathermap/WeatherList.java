@@ -2,9 +2,6 @@ package com.listapp.android.model.openweathermap;
 
 import java.util.Arrays;
 
-/**
- * Created on 4/10/2017.
- */
 
 public class WeatherList {
 
