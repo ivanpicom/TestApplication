@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by ivan on 4/10/2017.
  */
 
-public class WeatherGlobalData {
+public class WeatherGlobalDataVO {
 
     private String message;
 
@@ -14,9 +14,9 @@ public class WeatherGlobalData {
 
     private String cod;
 
-    private ArrayList<WeatherList> list;
+    private ArrayList<WeatherListVO> list;
 
-    private WeatherCity city;
+    private WeatherCityVO city;
 
     public String getMessage ()
     {
@@ -48,25 +48,25 @@ public class WeatherGlobalData {
         this.cod = cod;
     }
 
-    public ArrayList<WeatherList> getList() {
+    public ArrayList<WeatherListVO> getList() {
         return list;
     }
 
-    public void setList(ArrayList<WeatherList> list) {
+    public void setList(ArrayList<WeatherListVO> list) {
         this.list = list;
     }
 
-    public WeatherCity getCity() {
+    public WeatherCityVO getCity() {
         return city;
     }
 
-    public void setCity(WeatherCity city) {
+    public void setCity(WeatherCityVO city) {
         this.city = city;
     }
 
     @Override
     public String toString() {
-        return "WeatherGlobalData{" +
+        return "WeatherGlobalDataVO{" +
                 "message='" + message + '\'' +
                 ", cnt='" + cnt + '\'' +
                 ", cod='" + cod + '\'' +

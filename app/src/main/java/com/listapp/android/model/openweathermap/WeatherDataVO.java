@@ -4,7 +4,7 @@ package com.listapp.android.model.openweathermap;
  * Created by ivan on 4/10/2017.
  */
 
-public class WeatherData {
+public class WeatherDataVO {
 
     private String id;
 

@@ -1,7 +1,7 @@
 package com.listapp.android.network;
 
 import com.listapp.android.global.ApiServer;
-import com.listapp.android.model.openweathermap.WeatherGlobalData;
+import com.listapp.android.model.openweathermap.WeatherGlobalDataVO;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -19,5 +19,5 @@ public interface MeteoApiEndpointInterface {
             "Content-type: " + ApiServer.API_CONTENT_TYPE})
 
     @GET("/data/2.5/forecast")
-    Call<WeatherGlobalData> getWeather(@Query("id") String cityId, @Query("APPID") String apiKey);
+    Call<WeatherGlobalDataVO> getWeather(@Query("id") String cityId, @Query("APPID") String apiKey);
 }

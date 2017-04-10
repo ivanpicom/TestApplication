@@ -6,11 +6,11 @@ import java.util.Arrays;
  * Created by ivan on 4/10/2017.
  */
 
-public class WeatherList {
+public class WeatherListVO {
 
     private String dt;
 
-    private WeatherData[] weather;
+    private WeatherDataVO[] weather;
 
     private String dt_txt;
 
@@ -30,11 +30,11 @@ public class WeatherList {
         this.dt = dt;
     }
 
-    public WeatherData[] getWeather() {
+    public WeatherDataVO[] getWeather() {
         return weather;
     }
 
-    public void setWeather(WeatherData[] weather) {
+    public void setWeather(WeatherDataVO[] weather) {
         this.weather = weather;
     }
 
@@ -48,7 +48,7 @@ public class WeatherList {
 
     @Override
     public String toString() {
-        return "WeatherList{" +
+        return "WeatherListVO{" +
                 "dt='" + dt + '\'' +
                 ", weather=" + Arrays.toString(weather) +
                 ", dt_txt='" + dt_txt + '\'' +

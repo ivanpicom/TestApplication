@@ -4,7 +4,7 @@ package com.listapp.android.model.openweathermap;
  * Created by ivan on 4/10/2017.
  */
 
-public class WeatherCity
+public class WeatherCityVO
 {
 
     private String id;
@@ -46,7 +46,7 @@ public class WeatherCity
 
     @Override
     public String toString() {
-        return "WeatherCity{" +
+        return "WeatherCityVO{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", country='" + country + '\'' +
