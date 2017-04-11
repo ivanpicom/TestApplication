@@ -56,7 +56,7 @@ public class MainActivity extends BasicActivity implements WeatherListView{
 
         presenter.bind(this);
 
-        presenter.prefomDataWeather("3128758");
+        presenter.prefomDataWeather("3128759");
 
     }
     @Override
