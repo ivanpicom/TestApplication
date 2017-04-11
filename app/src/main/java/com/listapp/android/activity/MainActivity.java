@@ -98,6 +98,7 @@ public class MainActivity extends BasicActivity implements WeatherListView{
                 adapter.add(weatherList);
                 weatherListArrayAdapter.add(weatherList);
             }
+            mListArrayAdapter.notifyDataSetChanged();
         }
         else {
             // TODO error to update query
