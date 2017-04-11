@@ -1,6 +1,8 @@
 package com.listapp.android.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,6 +10,7 @@ import android.widget.ListView;
 
 import com.listapp.android.R;
 import com.listapp.android.activity.adapter.ItemAdapter;
+import com.listapp.android.activity.adapter.RecycleViewAdapter;
 import com.listapp.android.model.openweathermap.WeatherGlobalData;
 import com.listapp.android.model.openweathermap.WeatherList;
 import com.listapp.android.presenter.DataItemInteractorImpl;
@@ -19,8 +22,12 @@ import java.util.ArrayList;
 public class MainActivity extends BasicActivity implements WeatherListView{
 
     private ArrayList<WeatherList> weatherLists;
+    private ArrayList<WeatherList>  weatherListArrayAdapter;
     private ItemAdapter adapter;
     private DataItemPresenter presenter;
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager mLayoutManager;
+    private RecycleViewAdapter mListArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,21 @@ public class MainActivity extends BasicActivity implements WeatherListView{
             }
         });
 
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_main_activity);
+
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // specify an adapter (see also next example)
+        weatherListArrayAdapter = new ArrayList<WeatherList>();
+        mListArrayAdapter = new RecycleViewAdapter(weatherListArrayAdapter);
+        mRecyclerView.setAdapter(mListArrayAdapter);
+
+
+
     }
 
     @Override
@@ -71,8 +93,10 @@ public class MainActivity extends BasicActivity implements WeatherListView{
 
         if(weatherGlobalData != null) {
             adapter.clear();
+            weatherListArrayAdapter.clear();
             for (WeatherList weatherList : weatherGlobalData.getList()) {
                 adapter.add(weatherList);
+                weatherListArrayAdapter.add(weatherList);
             }
         }
         else {
