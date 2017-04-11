@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">@color/customPrimary1</color>
+    <color name="colorPrimaryDark">@color/customPrimary5</color>
+    <color name="colorAccent">@color/customAccentB5</color>
+
+    <color name="customPrimary1">#F26B23</color>
+    <color name="customPrimary2">#FFA777</color>
+    <color name="customPrimary3">#FF8C4F</color>
+    <color name="customPrimary4">#C84C09</color>
+    <color name="customPrimary5">#9E3700</color>
+
+    <color name="customSecondary1">#F2A023</color>
+    <color name="customSecondary2">#FFC977</color>
+    <color name="customSecondary3">#FFB94F</color>
+    <color name="customSecondary4">#C87C09</color>
+    <color name="customSecondary5">#9E6000</color>
 
 
-    <color name="customPrimary1">#84D6DE</color>
-    <color name="customPrimary2">#54BDC7</color>
-    <color name="customPrimary3">#32A7B2</color>
-    <color name="customPrimary4">#1594A0</color>
-    <color name="customPrimary5">#037681</color>
+    <color name="customAccentA1">#225C9E</color>
+    <color name="customAccentA2">#628EC0</color>
+    <color name="customAccentA3">#3D6FA7</color>
+    <color name="customAccentA4">#104682</color>
+    <color name="customAccentA5">#083567</color>
 
-    <color name="customSecondary1">#90A7E3</color>
-    <color name="customSecondary2">#6382D0</color>
-    <color name="customSecondary3">#4366BE</color>
-    <color name="customSecondary4">#254DB0</color>
-    <color name="customSecondary5">#11348E</color>
+    <color name="customAccentB1">#17A077</color>
+    <color name="customAccentB2">#5AC1A2</color>
+    <color name="customAccentB3">#34A986</color>
+    <color name="customAccentB4">#06845E</color>
+    <color name="customAccentB5">#006849</color>
 
     <color name="customPurple1">#A691E5</color>
     <color name="customPurple2">#8065D2</color>
