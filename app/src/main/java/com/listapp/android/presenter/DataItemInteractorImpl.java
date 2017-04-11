@@ -1,6 +1,7 @@
 package com.listapp.android.presenter;
 
 import com.listapp.android.global.ApiServer;
+import com.listapp.android.model.openweathermap.WeatherCurrentData;
 import com.listapp.android.model.openweathermap.WeatherGlobalData;
 import com.listapp.android.network.MeteoApiEndpointInterface;
 
@@ -18,20 +19,17 @@ public class DataItemInteractorImpl implements DataItemInteractor {
 
         // Call api
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-// set your desired log level
+
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-// add your other interceptors …
-// add logging as last interceptor
-        httpClient.addInterceptor(logging);  // <-- this is the important line!
+
+        httpClient.addInterceptor(logging);
 
 
         // Configure Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                // Base URL
                 .baseUrl(ApiServer.BASE_URL)
                 .client(httpClient.build())
-                // It converts the JSON response into java objects
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -45,6 +43,11 @@ public class DataItemInteractorImpl implements DataItemInteractor {
     public Call<WeatherGlobalData> dataWeather(String cityId) {
 
 
-        return meteoApiEndpointInterface.getWeather(cityId,ApiServer.API_KEY);//search("search+" + search);
+        return meteoApiEndpointInterface.getWeather(cityId,ApiServer.API_KEY);
+    }
+
+    @Override
+    public Call<WeatherCurrentData> dataCurrentWeather(String cityId) {
+        return meteoApiEndpointInterface.getCurrentWeather(cityId,ApiServer.API_KEY);
     }
 }

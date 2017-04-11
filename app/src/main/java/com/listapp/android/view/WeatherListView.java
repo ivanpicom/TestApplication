@@ -7,4 +7,5 @@ public interface  WeatherListView {
 
 
     void updateUi(WeatherGlobalData weatherGlobalData);
+    void updateCurrentUi(Float temp);
 }

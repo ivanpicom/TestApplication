@@ -2,6 +2,7 @@ package com.listapp.android.presenter;
 
 import android.util.Log;
 
+import com.listapp.android.model.openweathermap.WeatherCurrentData;
 import com.listapp.android.view.WeatherListView;
 import com.listapp.android.model.openweathermap.WeatherGlobalData;
 
@@ -40,7 +41,7 @@ public class DataItemPresenter {
                 if (statusCode == 200) {
 
                     WeatherGlobalData weatherGlobalData = response.body();
-                    Log.d(TAG, weatherGlobalData.toString());
+//                    Log.d(TAG, weatherGlobalData.toString());
 
                     if(view != null)
                         view.updateUi(weatherGlobalData);
@@ -53,6 +54,36 @@ public class DataItemPresenter {
 
             @Override
             public void onFailure(Call<WeatherGlobalData> call, Throwable t) {
+
+                view.updateUi(null);
+            }
+
+        });}
+    public void prefomCurrentDataWeather(String cityId) {
+
+        dataItemInteractor.dataCurrentWeather(cityId)
+        .enqueue(new Callback<WeatherCurrentData>() {
+            @Override
+            public void onResponse(Call<WeatherCurrentData> call, Response<WeatherCurrentData> response) {
+                int statusCode = response.code();
+                if (statusCode == 200) {
+
+                    WeatherCurrentData weatherCurrentData = response.body();
+                    Log.d(TAG, weatherCurrentData.toString());
+
+                    if(view != null){
+                        Float aux = weatherCurrentData.getMain().getTemp();
+                        view.updateCurrentUi(aux);//updateCurrentUi(weatherCurrentData);}
+
+                }
+
+                } else {
+                    view.updateUi(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<WeatherCurrentData> call, Throwable t) {
 
                 view.updateUi(null);
             }

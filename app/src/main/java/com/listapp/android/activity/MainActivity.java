@@ -3,6 +3,7 @@ package com.listapp.android.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.listapp.android.R;
 import com.listapp.android.activity.adapter.ItemAdapter;
@@ -25,6 +26,7 @@ public class MainActivity extends BasicActivity implements WeatherListView{
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private RecycleViewAdapter mListArrayAdapter;
+    private TextView currentTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +38,10 @@ public class MainActivity extends BasicActivity implements WeatherListView{
         // Create the adapter to convert the array to views
         adapter = new ItemAdapter(this, weatherLists);
 
-        // Attach the adapter to a ListView
-//        ListView listView = (ListView) findViewById(R.id.lt_main_activity);
-//        listView.setAdapter(adapter);
-
         DataItemInteractorImpl interactor = new DataItemInteractorImpl();
         presenter = new DataItemPresenter(interactor);
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                Log.d(TAG,"Item clicked");
-//
-//            }
-//        });
+        currentTemp = (TextView) findViewById(R.id.tv_main_activity_current_temperature);
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_main_activity);
@@ -77,6 +68,7 @@ public class MainActivity extends BasicActivity implements WeatherListView{
         presenter.bind(this);
 
         presenter.prefomDataWeather(ApiServer.CITY_ID_BARCELONA);
+        presenter.prefomCurrentDataWeather(ApiServer.CITY_ID_BARCELONA);
 
     }
     @Override
@@ -90,10 +82,8 @@ public class MainActivity extends BasicActivity implements WeatherListView{
     public void updateUi(WeatherGlobalData weatherGlobalData) {
 
         if(weatherGlobalData != null) {
-            adapter.clear();
             weatherListArrayAdapter.clear();
             for (WeatherList weatherList : weatherGlobalData.getList()) {
-                adapter.add(weatherList);
                 weatherListArrayAdapter.add(weatherList);
             }
             mListArrayAdapter.notifyDataSetChanged();
@@ -102,6 +92,16 @@ public class MainActivity extends BasicActivity implements WeatherListView{
             // TODO error to update query
         }
 
+
+
+    }
+
+    @Override
+    public void updateCurrentUi(Float  temp) {
+        if(temp!= 0) {
+            String aux = String.format("%.1f", temp / 10);
+            currentTemp.setText(aux);
+        }
 
 
     }
