@@ -65,7 +65,7 @@ public class MainActivity extends BasicActivity implements WeatherListView{
 
         // specify an adapter (see also next example)
         weatherListArrayAdapter = new ArrayList<WeatherList>();
-        mListArrayAdapter = new RecycleViewAdapter(weatherListArrayAdapter);
+        mListArrayAdapter = new RecycleViewAdapter(getApplicationContext(),weatherListArrayAdapter);
         mRecyclerView.setAdapter(mListArrayAdapter);
 
 

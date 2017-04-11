@@ -1,14 +1,17 @@
 package com.listapp.android.activity.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.listapp.android.R;
 import com.listapp.android.model.openweathermap.WeatherData;
 import com.listapp.android.model.openweathermap.WeatherList;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -18,10 +21,12 @@ import java.util.ArrayList;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.ViewHolder> {
     private ArrayList<WeatherList> mDataset;
+    private Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
-        private final TextView textView2;
+        private  TextView textView;
+        private  TextView textView2;
+        private ImageView imageView;
 
         public TextView mTextView;
         public ViewHolder(View v) {
@@ -30,13 +35,15 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
             // Lookup view for data population
              textView = (TextView) v.findViewById(R.id.textView);
              textView2 = (TextView) v.findViewById(R.id.textView2);
+            imageView = (ImageView) v.findViewById(R.id.imageView);
 
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RecycleViewAdapter(ArrayList<WeatherList> weatherListArrayAdapter) {
-        mDataset = weatherListArrayAdapter;
+    public RecycleViewAdapter(Context contextApp, ArrayList<WeatherList> weatherListArrayAdapter) {
+        this.mDataset = weatherListArrayAdapter;
+        this.context = contextApp;
     }
 
     // Create new views (invoked by the layout manager)
@@ -45,7 +52,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                                                    int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_item, parent, false);
+                .inflate(R.layout.row_card_item, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
         ViewHolder vh = new ViewHolder(v);
@@ -63,6 +70,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
             holder.textView.setText(weatherList.getDt_txt());
             WeatherData weatherData = weatherList.getWeather()[0];
             holder.textView2.setText(weatherData.getDescription());
+            String imageUrl =  "https://upload.wikimedia.org/wikipedia/en/b/be/Grover.JPG";
+
+            Picasso.with(this.context).load(imageUrl)
+                    .into(holder.imageView);
         }
 
     }
