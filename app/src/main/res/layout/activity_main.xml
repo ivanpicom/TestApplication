@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/md_blue_grey_50"
+    android:orientation="vertical"
     tools:context="com.listapp.android.activity.MainActivity">
 
     <!--<ListView-->
@@ -24,12 +25,46 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv_main_activity_ic_therm"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_centerVertical="true"
                 android:layout_margin="8dp"
                 android:src="@mipmap/ic_therm" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_main_activity_ic_therm"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_main_activity_current_temperature"
+                    style="@style/TextCelsius"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="26" />
+
+                <TextView
+                    style="@style/TextCelsius"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="Cº" />
+
+                <TextView
+                    style="@style/TextCelsius"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@string/current_temperature"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
         </RelativeLayout>
+
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
@@ -40,4 +75,4 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"></android.support.v7.widget.RecyclerView>
 
-</RelativeLayout>
+</LinearLayout>

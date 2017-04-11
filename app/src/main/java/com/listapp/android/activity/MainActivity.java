@@ -56,6 +56,7 @@ public class MainActivity extends BasicActivity implements WeatherListView{
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_main_activity);
 
         mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setVerticalFadingEdgeEnabled(true);
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);

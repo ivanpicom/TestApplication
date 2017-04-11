@@ -9,4 +9,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextCelsius" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">32sp</item>
+    </style>
+
 </resources>
