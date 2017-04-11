@@ -17,7 +17,7 @@ public class WeatherList {
 
 //    private Sys sys;
 
-//    private Main main;
+    private WeatherCurrentDataMain main;
 
     public String getDt() {
         return dt;
@@ -41,6 +41,14 @@ public class WeatherList {
 
     public void setDt_txt(String dt_txt) {
         this.dt_txt = dt_txt;
+    }
+
+    public WeatherCurrentDataMain getMain() {
+        return main;
+    }
+
+    public void setMain(WeatherCurrentDataMain main) {
+        this.main = main;
     }
 
     @Override

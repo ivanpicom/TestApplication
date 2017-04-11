@@ -102,6 +102,7 @@ public class MainActivity extends BasicActivity implements WeatherListView{
             String aux = String.format("%.1f", temp / 10);
             currentTemp.setText(aux);
         }
+        else currentTemp.setText("no data");
 
 
     }

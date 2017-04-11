@@ -9,9 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.listapp.android.R;
-import com.listapp.android.model.openweathermap.WeatherData;
 import com.listapp.android.model.openweathermap.WeatherList;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -24,17 +22,18 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     private Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private  TextView textView;
-        private  TextView textView2;
+        private TextView textView;
+        private TextView textView2;
         private ImageView imageView;
 
         public TextView mTextView;
+
         public ViewHolder(View v) {
             super(v);
 
             // Lookup view for data population
-             textView = (TextView) v.findViewById(R.id.textView);
-             textView2 = (TextView) v.findViewById(R.id.textView2);
+            textView = (TextView) v.findViewById(R.id.textView);
+            textView2 = (TextView) v.findViewById(R.id.textView2);
             imageView = (ImageView) v.findViewById(R.id.imageView);
 
         }
@@ -49,7 +48,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     // Create new views (invoked by the layout manager)
     @Override
     public RecycleViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+                                                            int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.row_card_item, parent, false);
@@ -65,18 +64,16 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
         WeatherList weatherList = mDataset.get(position);//getItem(position);
 
-        if(weatherList.getWeather().length >0) {
+        if (weatherList.getWeather().length > 0)
+
             // Populate the data into the template view using the data object
             holder.textView.setText(weatherList.getDt_txt());
-            WeatherData weatherData = weatherList.getWeather()[0];
-            holder.textView2.setText(weatherData.getDescription());
-            String imageUrl =  "https://upload.wikimedia.org/wikipedia/en/b/be/Grover.JPG";
 
-            Picasso.with(this.context).load(imageUrl)
-                    .into(holder.imageView);
-        }
+        String aux = String.format("%.1f", weatherList.getMain().getTemp() / 10);
 
+        holder.textView2.setText(aux + " Cº");
     }
+
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override

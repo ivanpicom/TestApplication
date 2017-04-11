@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-android:layout_marginBottom="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_centerInParent="true"
         android:elevation="12dp"
-        card_view:cardCornerRadius="4dp"
-        android:layout_height="96dp">
+        card_view:cardCornerRadius="4dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -21,33 +21,36 @@ android:layout_marginBottom="8dp"
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="48dp"
-                android:layout_marginLeft="16dp"
+                android:src="@mipmap/ic_therm"
+                android:alpha="0.5"
                 android:layout_height="48dp"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
                 android:scaleType="centerCrop"
-                app:srcCompat="@mipmap/ic_launcher_round" />
+                app:srcCompat="@mipmap/ic_therm" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="16dp"
                 android:layout_toRightOf="@id/imageView"
-                android:layout_centerVertical="true"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_marginBottom="16dp"
-                android:layout_width="wrap_content"
-                android:layout_toRightOf="@id/imageView"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_toRightOf="@id/imageView"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="194dp"
-                    android:layout_height="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:layout_toRightOf="@id/imageView"
                     android:text="TextView"
                     app:layout_constraintLeft_toRightOf="@+id/imageView" />

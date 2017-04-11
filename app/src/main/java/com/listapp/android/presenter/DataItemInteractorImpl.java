@@ -43,11 +43,11 @@ public class DataItemInteractorImpl implements DataItemInteractor {
     public Call<WeatherGlobalData> dataWeather(String cityId) {
 
 
-        return meteoApiEndpointInterface.getWeather(cityId,ApiServer.API_KEY);
+        return meteoApiEndpointInterface.getWeather(cityId, ApiServer.FORECAST_NUM_DAYS, ApiServer.API_KEY);
     }
 
     @Override
     public Call<WeatherCurrentData> dataCurrentWeather(String cityId) {
-        return meteoApiEndpointInterface.getCurrentWeather(cityId,ApiServer.API_KEY);
+        return meteoApiEndpointInterface.getCurrentWeather(cityId, ApiServer.API_KEY);
     }
 }

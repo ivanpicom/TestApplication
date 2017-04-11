@@ -12,4 +12,5 @@ public class ApiServer {
     public final static String API_CONTENT_TYPE = "application/json";
 
     public static final String CITY_ID_BARCELONA = "3128759";
+    public static final String FORECAST_NUM_DAYS = "10";
 }

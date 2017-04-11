@@ -17,11 +17,11 @@ public interface MeteoApiEndpointInterface {
             "Content-type: " + ApiServer.API_CONTENT_TYPE})
 
     @GET("/data/2.5/forecast")
-    Call<WeatherGlobalData> getWeather(@Query("id") String cityId, @Query("APPID") String apiKey);
+    Call<WeatherGlobalData> getWeather(@Query("id") String cityId,  @Query("cnt") String ndays, @Query("APPID") String apiKey);
 
     @Headers({
             "Content-type: " + ApiServer.API_CONTENT_TYPE})
 
     @GET("/data/2.5/weather")
-    Call<WeatherCurrentData> getCurrentWeather(@Query("id") String cityId, @Query("APPID") String apiKey);
+    Call<WeatherCurrentData> getCurrentWeather(@Query("id") String cityId,@Query("APPID") String apiKey);
 }
